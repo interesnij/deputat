@@ -7,6 +7,8 @@ SECRET_KEY = 'ur_4&s1!%8awdfa!z+_60jrbfbfbg!%i7m14z%drhg*v*!=1rpou5ebfb%$8ji3ngt
 DEBUG = True
 
 #SECURE_SSL_REDIRECT = True
+CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['xn--80aietlhndtbf.xn--p1acf', '151.248.117.65']
 

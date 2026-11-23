@@ -1,5 +1,5 @@
 from survey.view.repost import *
-from django.conf.urls import url
+from django.urls import re_path as url
 
 urlpatterns = [
     url(r'^u_ucm_survey_window/(?P<pk>\d+)/(?P<uuid>[0-9a-f-]+)/$', UUCMSurveyWindow.as_view()),

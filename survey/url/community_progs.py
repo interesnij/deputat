@@ -1,5 +1,5 @@
 from survey.view.community_progs import *
-from django.conf.urls import url
+from django.urls import re_path as url
 
 
 urlpatterns=[

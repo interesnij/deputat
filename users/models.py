@@ -41,6 +41,7 @@ class User(AbstractUser):
     birthday = models.DateField(blank=True, null=True, verbose_name='День рождения')
     username = None
     USERNAME_FIELD = 'phone'
+    REQUIRED_FIELDS = []
 
 
     class Meta:

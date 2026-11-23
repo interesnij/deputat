@@ -18,7 +18,7 @@ class UserNotifications(models.Model):
     class Meta:
         verbose_name = 'Настройка уведомдений пользователя'
         verbose_name_plural = 'Настройки уведомдений пользователя'
-        index_together = [('id', 'user'),]
+        #index_together = [('id', 'user'),]
 
     @receiver(post_save, sender=settings.AUTH_USER_MODEL)
     def create_u_model(sender, instance, created, **kwargs):
@@ -51,7 +51,7 @@ class UserPrivate(models.Model):
     class Meta:
         verbose_name = 'Настройка приватности пользователя'
         verbose_name_plural = 'Настройки приватности пользователя'
-        index_together = [('id', 'user'),]
+        #index_together = [('id', 'user'),]
 
     @receiver(post_save, sender=settings.AUTH_USER_MODEL)
     def create_u_model(sender, instance, created, **kwargs):

@@ -40,6 +40,7 @@ class User(AbstractUser):
     level = models.PositiveSmallIntegerField(default=1, verbose_name="Уровень")
     birthday = models.DateField(blank=True, null=True, verbose_name='День рождения')
     USERNAME_FIELD = 'phone'
+    REQUIRED_FIELDS = 'phone'
 
     class Meta:
         verbose_name = 'пользователь'

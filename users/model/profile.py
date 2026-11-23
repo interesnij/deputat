@@ -22,7 +22,7 @@ class UserLocation(models.Model):
     class Meta:
         verbose_name = "Местоположение"
         verbose_name_plural = "Местоположения"
-        index_together = [('id', 'user'),]
+        #index_together = [('id', 'user'),]
 
     def __str__(self):
         return '{}, {}, {}'.format(self.country_ru, self.region_ru, self.city_ru)
@@ -38,7 +38,7 @@ class IPUser(models.Model):
     class Meta:
         verbose_name = "ip пользователя"
         verbose_name_plural = "ip пользователей"
-        index_together = [('id', 'user'),]
+        #index_together = [('id', 'user'),]
 
     def __str__(self):
         return '{} - {}'.format(self.user.get_full_name(), self.ip)
@@ -166,7 +166,7 @@ class UserTransaction(models.Model):
     class Meta:
         verbose_name = "Транзакция"
         verbose_name_plural = "Транзакции"
-        indexes = (BrinIndex(fields=['created']),)
+        #indexes = (BrinIndex(fields=['created']),)
         ordering = ["-created"]
 
     def __str__(self):
@@ -195,7 +195,7 @@ class UserBlock(models.Model):
         return cls.objects.filter(Q(blocked_user_id=user_a_id, blocker_id=user_b_id)).exists()
 
     class Meta:
-        unique_together = ('blocked_user', 'blocker',)
+        #unique_together = ('blocked_user', 'blocker',)
         indexes = [models.Index(fields=['blocked_user', 'blocker']),]
 
 
@@ -235,4 +235,4 @@ class FollowPerm(models.Model):
     class Meta:
         verbose_name = 'Исключения/Включения followers'
         verbose_name_plural = 'Исключения/Включения followers'
-        index_together = [('id', 'user'),]
+        #index_together = [('id', 'user'),]

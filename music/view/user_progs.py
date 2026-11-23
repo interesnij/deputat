@@ -3,7 +3,6 @@ from django.views import View
 from django.views.generic.base import TemplateView
 from music.forms import PlaylistForm, TrackForm
 from django.http import HttpResponse, HttpResponseBadRequest
-from common.parsing_soundcloud.add_playlist import add_playlist
 from django.http import Http404
 from common.templates import render_for_platform, get_small_template
 
@@ -27,7 +26,7 @@ class UserSoundcloudSetCreate(TemplateView):
             new_list = form_post.save(commit=False)
             new_list.creator = request.user
             new_list.save()
-            add_playlist(request.POST.get('permalink'), request.user, new_list)
+            #add_playlist(request.POST.get('permalink'), request.user, new_list)
             return render_for_platform(request, 'user_music/list.html',{'playlist': new_list, 'object_list': new_list.playlist_too(),'user': request.user})
         else:
             return HttpResponseBadRequest()
@@ -40,7 +39,7 @@ class UserSoundcloudSet(TemplateView):
     def post(self,request,*args,**kwargs):
         list = SoundList.objects.get(uuid=self.kwargs["uuid"])
         if request.is_ajax():
-            add_playlist(request.POST.get('permalink'), request.user, list)
+            #add_playlist(request.POST.get('permalink'), request.user, list)
             return HttpResponse()
         else:
             return HttpResponseBadRequest()

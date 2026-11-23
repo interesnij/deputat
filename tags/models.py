@@ -1,5 +1,4 @@
 from django.db import models
-from blog.models import Blog, ElectNew
 
 
 class ManagerTag(models.Model):

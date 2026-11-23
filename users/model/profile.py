@@ -46,8 +46,8 @@ class IPUser(models.Model):
 
 class Bookmarks(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="user_bookmarks", verbose_name="Избранное", on_delete=models.CASCADE)
-    blog = models.ManyToManyField(Blog, blank=True, related_name='blog_bookmarks')
-    new = models.ManyToManyField(ElectNew, blank=True, related_name='new_bookmarks')
+    #blog = models.ManyToManyField(Blog, blank=True, related_name='blog_bookmarks')
+    #new = models.ManyToManyField(ElectNew, blank=True, related_name='new_bookmarks')
     blog_comment = models.ManyToManyField(BlogComment, blank=True, related_name='blog_comment_bookmarks')
     new_comment = models.ManyToManyField(ElectNewComment, blank=True, related_name='new_comment_bookmarks')
 

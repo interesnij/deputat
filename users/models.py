@@ -39,6 +39,7 @@ class User(AbstractUser):
     city = models.ForeignKey('city.City', blank=True, null=True, on_delete=models.SET_NULL, verbose_name="Город")
     level = models.PositiveSmallIntegerField(default=1, verbose_name="Уровень")
     birthday = models.DateField(blank=True, null=True, verbose_name='День рождения')
+    username = None
     USERNAME_FIELD = 'phone'
 
 

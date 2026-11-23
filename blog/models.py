@@ -26,7 +26,7 @@ class Blog(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, verbose_name="Создатель")
     slug = AutoSlugField(populate_from='title', null=True)
     type = models.CharField(choices=TYPE, default=PUBLISHED, max_length=5, verbose_name="Статус записи")
-    #tags = models.ManyToManyField('tags.ManagerTag', blank=True, related_name='+', verbose_name="Теги")
+    tags = models.ManyToManyField('tags.ManagerTag', blank=True, related_name='+', verbose_name="Теги")
 
     comment = models.PositiveIntegerField(default=0, verbose_name="Кол-во комментов")
     view = models.PositiveIntegerField(default=0, verbose_name="Кол-во просмотров")
@@ -35,9 +35,9 @@ class Blog(models.Model):
     inert = models.PositiveIntegerField(default=0, verbose_name="Кол-во inert")
     repost = models.PositiveIntegerField(default=0, verbose_name="Кол-во репостов")
 
-    #region = models.ManyToManyField("region.Region", blank=True, related_name='+', verbose_name="Регионы")
-    #elect = models.ManyToManyField("elect.Elect", blank=True, related_name='+', verbose_name="Депутаты")
-    #tags = models.ManyToManyField('tags.ManagerTag', blank=True, related_name='+', verbose_name="Теги")
+    region = models.ManyToManyField("region.Region", blank=True, related_name='+', verbose_name="Регионы")
+    elect = models.ManyToManyField("elect.Elect", blank=True, related_name='+', verbose_name="Депутаты")
+    tags = models.ManyToManyField('tags.ManagerTag', blank=True, related_name='+', verbose_name="Теги")
     attach = models.CharField(blank=True, max_length=200, verbose_name="Прикрепленные элементы")
 
     class Meta:
@@ -446,8 +446,8 @@ class ElectNew(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Создан")
     description = models.TextField(max_length=5000, blank=True, verbose_name="Описание")
-    #elect = models.ForeignKey(Elect, null=True, on_delete=models.SET_NULL, related_name="new_elect", verbose_name="Чиновник")
-    #category = models.ForeignKey(ElectNewsCategory, on_delete=models.SET_NULL, related_name="elect_cat", blank=True, null=True, verbose_name="Категория активности")
+    elect = models.ForeignKey(Elect, null=True, on_delete=models.SET_NULL, related_name="new_elect", verbose_name="Чиновник")
+    category = models.ForeignKey(ElectNewsCategory, on_delete=models.SET_NULL, related_name="elect_cat", blank=True, null=True, verbose_name="Категория активности")
     type = models.CharField(choices=TYPE, default=PROCESSING, max_length=5, verbose_name="Статус записи")
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="elect_new_creator", null=True, blank=True, on_delete=models.SET_NULL, verbose_name="Создатель")
     content = RichTextUploadingField(config_name='default',)
@@ -455,7 +455,7 @@ class ElectNew(models.Model):
     votes_on = models.BooleanField(default=True, verbose_name="Реакции разрешены")
     attach = models.CharField(blank=True, max_length=200, verbose_name="Прикрепленные элементы")
     community = models.ForeignKey('communities.Community', related_name='elect_new_community', on_delete=models.CASCADE, null=True, blank=True, verbose_name="Сообщество")
-    #tags = models.ManyToManyField('tags.ManagerTag', blank=True, related_name='+', verbose_name="Теги")
+    tags = models.ManyToManyField('tags.ManagerTag', blank=True, related_name='+', verbose_name="Теги")
 
     comment = models.PositiveIntegerField(default=0, verbose_name="Кол-во комментов")
     view = models.PositiveIntegerField(default=0, verbose_name="Кол-во просмотров")

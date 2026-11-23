@@ -20,7 +20,7 @@ class BlogVotes(models.Model):
 
     vote = models.CharField(max_length=5, verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
 class ElectNewVotes2(models.Model):
     LIKE = "LIK"
@@ -30,7 +30,7 @@ class ElectNewVotes2(models.Model):
 
     vote = models.CharField(max_length=5, verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #new = models.ForeignKey(ElectNew, on_delete=models.CASCADE, verbose_name="Новость")
+    new = models.ForeignKey(ElectNew, on_delete=models.CASCADE, verbose_name="Новость")
 
 
 class CommunityVotes(models.Model):
@@ -41,7 +41,7 @@ class CommunityVotes(models.Model):
 
     vote = models.CharField(max_length=5, verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #community = models.ForeignKey("communities.Community", on_delete=models.CASCADE)
+    community = models.ForeignKey("communities.Community", on_delete=models.CASCADE)
 
 class ElectVotes(models.Model):
     LIKE = "LIK"
@@ -51,7 +51,7 @@ class ElectVotes(models.Model):
 
     vote = models.CharField(max_length=5, verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #elect = models.ForeignKey("elect.Elect", on_delete=models.CASCADE)
+    elect = models.ForeignKey("elect.Elect", on_delete=models.CASCADE)
 
 
 class ElectNewCommentVotes(models.Model):
@@ -60,7 +60,7 @@ class ElectNewCommentVotes(models.Model):
 
     vote = models.IntegerField(default=0, verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #comment = models.ForeignKey(ElectNewComment, on_delete=models.CASCADE)
+    comment = models.ForeignKey(ElectNewComment, on_delete=models.CASCADE)
 
 class BlogCommentVotes(models.Model):
     LIKE = 1
@@ -68,7 +68,7 @@ class BlogCommentVotes(models.Model):
 
     vote = models.IntegerField(verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #comment = models.ForeignKey(BlogComment, on_delete=models.CASCADE)
+    comment = models.ForeignKey(BlogComment, on_delete=models.CASCADE)
 
 class OrganizationCommentVotes(models.Model):
     LIKE = 1
@@ -76,7 +76,7 @@ class OrganizationCommentVotes(models.Model):
 
     vote = models.IntegerField(verbose_name="Голос", choices=VOTES)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #comment = models.ForeignKey(BlogComment, on_delete=models.CASCADE)
+    comment = models.ForeignKey(BlogComment, on_delete=models.CASCADE)
 
 
 class ElectRating(models.Model):
@@ -97,7 +97,7 @@ class ElectRating(models.Model):
                 (PLUS_3, '#A2D07F'),
             )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Пользователь")
-    #elect = models.ForeignKey("elect.Elect", on_delete=models.CASCADE)
+    elect = models.ForeignKey("elect.Elect", on_delete=models.CASCADE)
 
     vakcine = models.SmallIntegerField(verbose_name="Добровольность вакцинации", default=ZERO, choices=VOTES)
     pp_825 = models.SmallIntegerField(verbose_name="Отмена обязательной вакцинации по приказу минздрава 825", default=ZERO, choices=VOTES)

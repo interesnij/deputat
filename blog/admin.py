@@ -17,7 +17,13 @@ class BlogAdmin(admin.ModelAdmin):
         return form
 
 class ElectNewAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'type', 'elect', "pk"]
+    list_display = [
+          'title', 
+          'description', 
+          'type', 
+          #'elect', 
+          "pk"
+          ]
     list_filter = ['created', 'is_fixed']
     search_fields = ['title']
 
